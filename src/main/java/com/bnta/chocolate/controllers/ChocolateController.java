@@ -43,7 +43,7 @@ public class ChocolateController {
         return new ResponseEntity<>(newChocolate, HttpStatus.CREATED);
     }
 
-    //  INDEX
+//    -------------------- code below has been refactored into getAllChocolatesAndFilters() on line 23 -----------------
 //    @GetMapping
 //    public List<Chocolate> getAllChocolates(){
 //        return chocolateRepository.findAll();
@@ -54,6 +54,5 @@ public class ChocolateController {
 //        return new ResponseEntity<>(chocolateRepository
 //                .findChocolateByCocoaPercentageGreaterThan(cocoaPercentage), HttpStatus.OK);
 //    }
-
 
 }
