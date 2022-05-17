@@ -9,7 +9,7 @@ import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 
-@Component
+@Component //Let spring know this class is a component, do not forget to implement ApplicationRunner below
 public class DataLoader implements ApplicationRunner{
 
     @Autowired
