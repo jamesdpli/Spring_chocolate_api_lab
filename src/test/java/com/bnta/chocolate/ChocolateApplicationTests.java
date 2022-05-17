@@ -13,17 +13,17 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 @SpringBootTest
 class ChocolateApplicationTests {
 
-//	@Autowired
-//	ChocolateRepository chocolateRepository;
+	@Autowired
+	ChocolateRepository chocolateRepository;
 
 	@Test
 	void contextLoads() {
 	}
 
-//	@Test
-//	void canFindChocolateGreaterThan60(){
-//		List<Chocolate> foundChocolate = chocolateRepository.findByCocoaPercentageGreaterThan(60);
-//		assertThat(foundChocolate.size()).isEqualTo(4);
-//	}
+	@Test
+	void canFindChocolateGreaterThan60(){
+		List<Chocolate> foundChocolate = chocolateRepository.findChocolateByCocoaPercentageGreaterThan(60);
+		assertThat(foundChocolate.size()).isEqualTo(4);
+	}
 	
 }

@@ -3,6 +3,7 @@ package com.bnta.chocolate.controllers;
 import com.bnta.chocolate.models.Chocolate;
 import com.bnta.chocolate.repositories.ChocolateRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -19,8 +20,14 @@ public class ChocolateController {
 
 //  INDEX
     @GetMapping
-    public List<Chocolate> getAllChocolates(){
-        return chocolateRepository.findAll();
+    public ResponseEntity<List<Chocolate>> getAllChocolatesAndFilters(
+            @RequestParam(required = false, name = "cocoaPercentage") Integer cocoaPercentage
+    ){
+        if(cocoaPercentage != null){
+            return new ResponseEntity<>(chocolateRepository
+                    .findChocolateByCocoaPercentageGreaterThan(cocoaPercentage), HttpStatus.OK);
+        }
+        return new ResponseEntity<>(chocolateRepository.findAll(), HttpStatus.OK);
     }
 
 //  SHOW
@@ -36,8 +43,17 @@ public class ChocolateController {
         return new ResponseEntity<>(newChocolate, HttpStatus.CREATED);
     }
 
+    //  INDEX
 //    @GetMapping
-//    public List<Chocolate> getAllFilteredChocolate(@PathVariable Long id){
-//        return chocolateRepository.findByCocoaPercentageGreaterThan(id);
+//    public List<Chocolate> getAllChocolates(){
+//        return chocolateRepository.findAll();
 //    }
+
+//    @GetMapping
+//    public ResponseEntity<List<Chocolate>> getAllFilteredChocolate(@RequestParam(name = "cocoaPercentage") int cocoaPercentage){
+//        return new ResponseEntity<>(chocolateRepository
+//                .findChocolateByCocoaPercentageGreaterThan(cocoaPercentage), HttpStatus.OK);
+//    }
+
+
 }
