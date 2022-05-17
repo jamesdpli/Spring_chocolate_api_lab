@@ -36,4 +36,8 @@ public class ChocolateController {
         return new ResponseEntity<>(newChocolate, HttpStatus.CREATED);
     }
 
+//    @GetMapping
+//    public List<Chocolate> getAllFilteredChocolate(@PathVariable Long id){
+//        return chocolateRepository.findByCocoaPercentageGreaterThan(id);
+//    }
 }
