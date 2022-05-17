@@ -11,7 +11,7 @@ public class Chocolate {
     private Long id;
     @Column
     private String name;
-    @Column
+    @Column(name = "cocoa_percentage") //bring it up h2 does it for you
     private int cocoaPercentage;
     @ManyToOne
     @JoinColumn(name = "estate_id", nullable = false)
